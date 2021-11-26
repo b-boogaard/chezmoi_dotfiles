@@ -1,0 +1,36 @@
+# Load zgen
+# Assumes zgen is available.
+
+source "${ZGEN_HOME}/zgen.zsh"
+
+# Check if the init script created by zgen exists
+if ! zgen saved ; then
+
+    zgen oh-my-zsh
+
+    # zsh syntax highlighting
+    zgen load zdharma/fast-syntax-highlighting
+
+    # guess what to install when unknown command is used
+    zgen oh-my-zsh plugins/command-not-found
+
+    # git aliases and functions
+    zgen oh-my-zsh plugins/git
+
+    # git autocomplete
+    zgen oh-my-zsh plugins/git-extras
+
+    # a few common and useful aliases
+    zgen oh-my-zsh plugins/common-aliases
+
+    # awesome aliases for mvn
+    zgen oh-my-zsh plugins/mvn
+
+    # Load zsh theme.
+    zgen oh-my-zsh themes/blinks
+
+    zgen save
+fi
+
+zgen-oh-my-zsh
+
