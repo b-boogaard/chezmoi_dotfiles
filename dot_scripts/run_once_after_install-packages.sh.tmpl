@@ -2,7 +2,7 @@
 
 {{ if (eq .chezmoi.os "linux") }}
 {{	if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-sh {{ .chezmoi.sourceDir -}} /dot_scripts/linux-wsl/run_once_install-packages.sh
+sh $HOME/.scripts/linux-wsl/execute.sh
 {{ 	else }}
 echo "Running non-WSL Linux"
 {{ 	end }}
