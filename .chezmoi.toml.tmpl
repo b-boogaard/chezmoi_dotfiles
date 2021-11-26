@@ -1,0 +1,15 @@
+{{- $name := "Brian van de Boogaard" | quote -}}
+{{- $email := "brian.boogaard@gmail.com" | quote -}}
+{{- $github_user := "b-boogaard" | quote -}}
+
+{{- if (env "ASK") -}}
+{{- $name := promptString "name" -}}
+{{- $email := promptString "email" -}}
+{{- $github_user := promptString "github user" -}}
+{{- end -}}
+
+[data]
+	email = {{ $email }}
+	name = {{ $name }}
+	github_user = {{ $github_user }}
+	sourcedir = {{ .chezmoi.sourceDir | quote }}
