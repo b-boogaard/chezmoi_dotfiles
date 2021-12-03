@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+if [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
+  ssh-keygen
+fi
+
+token={{- (index (lastpass "chezmoi_github") 0).note.token | quote }}
+token=$(echo $token | sed 's/ *$//g')
+hostname={{- .chezmoi.hostname | quote }}
+
+curl \
+ -v \
+ -X POST \
+ -H "Accept: application/vnd.github.v3+json" \
+ -H "Authorization: token $token" https://api.github.com/user/keys \
+ -d '{"title":"'"$(${hostname})"'", "key":"'"$(cat $HOME/.ssh/id_rsa.pub)"'"}'

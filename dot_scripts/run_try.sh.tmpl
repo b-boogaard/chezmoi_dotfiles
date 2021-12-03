@@ -1,4 +1,0 @@
-#!/usr/bin/env zsh
-
-githubPassword={{- (index (lastpass "github.com") 0).password | quote }}
-echo -e "$githubPassword"
