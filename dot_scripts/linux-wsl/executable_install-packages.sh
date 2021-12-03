@@ -2,4 +2,5 @@
 
 sudo apt install -y zsh \
   vim \
-  lastpass-cli
+  lastpass-cli \
+  jq

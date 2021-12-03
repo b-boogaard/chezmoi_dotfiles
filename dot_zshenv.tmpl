@@ -1,7 +1,6 @@
 # System environment variables
 export ARCHFLAGS="-arch x86_64"
 export GOPATH=$HOME/go
-# export GRADLE_HOME=$HOME/bin/gradle-2.9
 export LANG=en_US.UTF-8
 # export NODE_PATH=/usr/local/bin/node
 # export NODE_PATH=/usr/local/lib/jsctags:$NODE_PATH
@@ -21,21 +20,14 @@ export PATH=$HOME/.jenv/bin:$PATH
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.pyenv/bin:$PATH
 export PATH=$HOME/.rbenv/bin:$PATH
-# export PATH=/usr/local/Cellar/openresty/1.15.8.1/nginx/sbin:$PATH
-# export PATH=/usr/local/Cellar/openresty/1.15.8.1/luajit/bin:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 export PATH=$GOPATH/bin:$PATH
 export PATH=$GRADLE_HOME/bin:$PATH
 export PATH=$SCALA_HOME/bin:$PATH
-# export PATH=/Applications/CMake.app/Contents/bin:$PATH
 export PATH=/usr/local/opt/make/libexec/gnubin:$PATH
-# export PATH=/usr/local/Cellar/emacs/26.2/bin:$PATH
-# export PATH=/usr/local/Cellar/macvim/8.1-161/bin:$PATH
 export PATH=/usr/local/opt/openssl/bin:$PATH
 export PATH=/usr/local/opt/sqlite/bin:$PATH
-# export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-# export PATH=/usr/local/opt/v8@3.15/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$HOME/bin:$PATH
 
@@ -46,9 +38,7 @@ export PATH=$HOME/bin:$PATH
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    #export EDITOR='TERM=xterm-16color emacs'
     export EDITOR='vim'
 else
-    #export EDITOR='TERM=xterm-16color emacs'
     export EDITOR='vim'
 fi

@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 if [ ! -f "$HOME/.ssh/id_rsa.pub" ]; then
   ssh-keygen
@@ -8,9 +8,27 @@ token={{- (index (lastpass "chezmoi_github") 0).note.token | quote }}
 token=$(echo $token | sed 's/ *$//g')
 hostname={{- .chezmoi.hostname | quote }}
 
-curl \
- -v \
- -X POST \
- -H "Accept: application/vnd.github.v3+json" \
- -H "Authorization: token $token" https://api.github.com/user/keys \
- -d '{"title":"'"$(${hostname})"'", "key":"'"$(cat $HOME/.ssh/id_rsa.pub)"'"}'
+response=$(curl -s \
+  -H "Accept: application/vnd.github.v3+json" \
+  -H "Authorization: token $token" https://api.github.com/user/keys \
+  https://api.github.com/user/keys)
+
+key_titles=$(echo $response | jq '.[] | .title')
+
+if [[ $key_titles =~ {{ .chezmoi.hostname }} ]]; then
+  echo "SSH key already exists in GitHub.\n"
+else
+  echo "Uploading SSH key to GitHub.\n"
+
+  curl \
+  -X POST \
+  -H "Accept: application/vnd.github.v3+json" \
+  -H "Authorization: token $token" https://api.github.com/user/keys \
+  -d '{"title":"'"$(${hostname})"'", "key":"'"$(cat $HOME/.ssh/id_rsa.pub)"'"}'
+fi
+
+sourcedir={{- .sourcedir }}
+dotfile_repo={{- .dotfile_repo }}
+
+git -C "${sourcedir}" remote remove origin
+git -C "${sourcedir}" remote add origin ${dotfile_repo}
