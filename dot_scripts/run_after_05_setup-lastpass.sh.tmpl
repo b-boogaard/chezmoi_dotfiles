@@ -1,6 +1,13 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
 echo "Setting up lastpass."
-email={{- .lastpass_email }}
 
-lpass login ${email}
+email={{- .lastpass_email }}
+lpass_status=$(lpass status)
+
+if [[ $lpass_status =~ "Logged in as $email" ]]; then
+  echo "Already logged into Lastpass."
+  return
+else
+  lpass login $email
+fi

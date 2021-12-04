@@ -1,5 +1,3 @@
 #!/usr/bin/env sh
 
-echo "Init zsh"
-
-zsh
+echo "Don't forget to switch your current shell by either restarting it or running zsh."

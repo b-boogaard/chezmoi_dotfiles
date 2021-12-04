@@ -10,15 +10,14 @@ hostname={{- .chezmoi.hostname | quote }}
 
 response=$(curl -s \
   -H "Accept: application/vnd.github.v3+json" \
-  -H "Authorization: token $token" https://api.github.com/user/keys \
-  https://api.github.com/user/keys)
+  -H "Authorization: token $token" https://api.github.com/user/keys)
 
 key_titles=$(echo $response | jq '.[] | .title')
 
 if [[ $key_titles =~ {{ .chezmoi.hostname }} ]]; then
-  echo "SSH key already exists in GitHub.\n"
+  echo "SSH key already exists in GitHub."
 else
-  echo "Uploading SSH key to GitHub.\n"
+  echo "Uploading SSH key to GitHub."
 
   curl \
   -X POST \
@@ -31,4 +30,4 @@ sourcedir={{- .sourcedir }}
 dotfile_repo={{- .dotfile_repo }}
 
 git -C "${sourcedir}" remote remove origin
-git -C "${sourcedir}" remote add origin ${dotfile_repo}
+git -C "${sourcedir}" remote add origin $dotfile_repo
