@@ -5,4 +5,6 @@ sudo apt install -y zsh \
   vim \
   lastpass-cli \
   jq \
-  gnupg
+  gnupg \
+  gettext
+
