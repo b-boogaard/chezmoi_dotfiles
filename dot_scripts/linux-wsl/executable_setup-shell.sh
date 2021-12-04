@@ -1,6 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/env zsh
 
-echo "Switching default shell."
+echo "Switching default shell to zsh."
+sleep 2s
 
 user_shell=$(getent passwd $USER | cut -d : -f 7)
 
@@ -10,3 +11,5 @@ else
   chsh -s $(which zsh)
   sudo chsh -s $(which zsh)
 fi
+
+source $HOME/.zshrc
