@@ -7,5 +7,6 @@ sudo apt install -y zsh \
   jq \
   gnupg \
   gettext \
-  keychain
+  keychain \
+  pinentry-curses
 

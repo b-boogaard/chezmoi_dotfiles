@@ -15,3 +15,7 @@
 	sourcedir = {{ .chezmoi.sourceDir | quote }}
   dotfile_repo = "git@github.com:b-boogaard/chezmoi_dotfiles.git"
   lastpass_email = "brianboogaard@gmail.com"
+
+[pinentry]
+  command = "pinentry"
+  options = ["allow-external-password-cache"]
