@@ -6,5 +6,6 @@ sudo apt install -y zsh \
   lastpass-cli \
   jq \
   gnupg \
-  gettext
+  gettext \
+  keychain
 
