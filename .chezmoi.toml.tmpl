@@ -1,18 +1,20 @@
-{{- $name := "Brian van de Boogaard" | quote -}}
-{{- $email := "brian.boogaard@gmail.com" | quote -}}
-{{- $github_user := "b-boogaard" | quote -}}
+# vim: filetype=toml:
 
-{{- if (env "ASK") -}}
-{{- $name := promptString "name" -}}
-{{- $email := promptString "email" -}}
-{{- $github_user := promptString "github user" -}}
-{{- end -}}
+{{ $name := "Brian van de Boogaard" | quote -}}
+{{ $email := "brian.boogaard@gmail.com" | quote -}}
+{{ $github_user := "b-boogaard" | quote -}}
+
+{{ if (env "ASK") -}}
+{{ $name := promptString "name" -}}
+{{ $email := promptString "email" -}}
+{{ $github_user := promptString "github user" -}}
+{{ end -}}
 
 [data]
-	email = {{ $email }}
-	name = {{ $name }}
-	github_user = {{ $github_user }}
-	sourcedir = {{ .chezmoi.sourceDir | quote }}
+  email = {{ $email }}
+  name = {{ $name }}
+  github_user = {{ $github_user }}
+  sourcedir = {{ .chezmoi.sourceDir | quote }}
   dotfile_repo = "git@github.com:b-boogaard/chezmoi_dotfiles.git"
   lastpass_email = "brianboogaard@gmail.com"
 
