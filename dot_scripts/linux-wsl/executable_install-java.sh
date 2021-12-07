@@ -13,9 +13,9 @@ if [ -z "$dpkg_check" ]; then
   sudo apt-get install ./zulu-repo_1.0.0-3_all.deb
   rm ./zulu-repo_1.0.0-3_all.deb
 
-  sudo apt-get update
+  sudo apt update
 
-  sudo apt-get install -y zulu11-jdk
+  sudo apt -qq install -y zulu11-jdk
 else
   echo "$jdk_version already installed."
   return
