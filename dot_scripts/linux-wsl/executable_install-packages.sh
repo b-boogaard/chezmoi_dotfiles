@@ -8,5 +8,6 @@ sudo apt -qq install -y zsh \
   gnupg \
   gettext \
   keychain \
-  pinentry-curses
+  pinentry-curses \
+  emacs
 
